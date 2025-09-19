@@ -25,8 +25,12 @@
             <a href="#">Luxury Hotel</a>
         </div>
         <nav class="main-nav">
-            <a href="#" class="btn btn-secondary">Đăng nhập</a>
-            <a href="#" class="btn btn-primary">Đăng ký</a>
+            <form action="login" method="GET" style="display: inline;">
+                <button type="submit" class="btn btn-secondary">Đăng nhập</button>
+            </form>
+            <form action="register" method="GET" style="display: inline;">
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </form>
         </nav>
     </div>
 </header>
