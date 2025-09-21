@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class RoomDAO {
 
     public ArrayList<Room> getAllRoom() {
-        ArrayList<Room> result = new ArrayList<>();
+        ArrayList<Room> result = new ArrayList<Room>();
         String sql = "SELECT [RoomID] ,[RoomNumber] ,[RoomTypeID] ,[Description] ,[Status] FROM [HotelManagement].[dbo].[ROOM]";
         Connection con = null;
         PreparedStatement ps = null;
