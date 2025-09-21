@@ -31,6 +31,7 @@ public class HomeController extends HttpServlet {
         req.setAttribute("rooms", rooms);
         req.setAttribute("roomTypes", roomTypes);
         req.getRequestDispatcher("home.jsp").forward(req, resp);
+        // test thui
 
     }
 }

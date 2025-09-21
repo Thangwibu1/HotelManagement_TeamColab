@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class RoomTypeDAO {
     public ArrayList<RoomType> getAllRoomType() {
-        ArrayList<RoomType> result = new ArrayList<>();
+        ArrayList<RoomType> result = new ArrayList<RoomType>();
 
         String sql = "select [TypeName], [Capacity], [PricePerNight] from ROOM_TYPE";
         Connection con = null;
