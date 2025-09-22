@@ -150,7 +150,10 @@
                             %>
                         </div>
                         <div class="room-price"><%= price %> VNĐ <span>/đêm</span></div>
-                        <button class="btn btn-book">Đặt phòng ngay</button>
+                        <form action="rentalRoom">
+                            <input type="hidden" name="roomId" value="<%= room.getRoomId() %>">
+                            <input type="submit" class="btn btn-book" value="Đặt phòng ngay">
+                        </form>
                     </div>
                 </div>
                 <%
