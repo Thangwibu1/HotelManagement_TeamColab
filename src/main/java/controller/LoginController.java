@@ -21,7 +21,6 @@ public class LoginController extends HttpServlet {
     public void init() throws ServletException {
         staffDAO = new StaffDAO();
         guestDAO = new GuestDAO();
-        System.out.println("LoginController initialized");
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -29,6 +28,7 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Staff staff = staffDAO.getStaffByUsernameAndPassword(username, password);
+
         Guest guest = guestDAO.getGuestByUsernameAndPassword(username, password);
         if (staff != null || guest != null) {
             if (staff != null) {
@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet {
             }
         } else {
             request.setAttribute("error", "Invalid username or password");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("loginPage.jsp").forward(request, response);
         }
     }
 

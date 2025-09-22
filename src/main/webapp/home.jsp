@@ -33,8 +33,6 @@
 
             String username = "";
             if (isLogin != null && isLogin == true) {
-                System.out.println("Da login");
-                System.out.println(loginStaff);
                 if (loginStaff != null) {
                     username = loginStaff.getUsername(); // hoặc loginStaff.getUsername()
                 } else if (loginGuest != null) {
