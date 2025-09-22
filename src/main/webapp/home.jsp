@@ -2,6 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.Room" %>
 <%@ page import="model.RoomType" %>
+<%@ page import="model.Staff" %>
+<%@ page import="model.Guest" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -24,16 +26,40 @@
         <div class="logo">
             <a href="#">Luxury Hotel</a>
         </div>
+        <%
+            Boolean isLogin = (Boolean) request.getAttribute("isLogin");
+            Staff loginStaff = (Staff) request.getAttribute("userStaff");
+            Guest loginGuest = (Guest) request.getAttribute("userGuest");
+
+            String username = "";
+            if (isLogin != null && isLogin == true) {
+                if (loginStaff != null) {
+                    username = loginStaff.getUsername(); // hoặc loginStaff.getUsername()
+                } else if (loginGuest != null) {
+                    username = loginGuest.getFullName(); // hoặc loginGuest.getUsername()
+                }
+            }
+        %>
         <nav class="main-nav">
-            <form action="login" method="GET" style="display: inline;">
-                <button type="submit" class="btn btn-secondary">Đăng nhập</button>
+            <% if (isLogin != null && isLogin == true) { %>
+            <!-- User đã đăng nhập - hiển thị username -->
+            <span style="color: white; margin-right: 15px;">Xin chào, <%= username %>!</span>
+            <form style="display: inline;">
+                <button class="btn btn-secondary"><a href="logout" style="color: white">Đăng xuất</a></button>
             </form>
-            <form action="register" method="GET" style="display: inline;">
-                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            <% } else { %>
+            <!-- User chưa đăng nhập - hiển thị nút đăng nhập/đăng ký -->
+            <form style="display: inline;">
+                <button class="btn btn-secondary"><a href="./loginPage.jsp" style="color: white">Đăng nhập</a></button>
             </form>
+            <form style="display: inline;">
+                <button class="btn btn-primary"><a href="./registerPage.jsp" style="color: white">Đăng ký</a></button>
+            </form>
+            <% } %>
         </nav>
     </div>
 </header>
+
 
 <section class="hero">
     <div class="hero-content">
@@ -94,7 +120,7 @@
                                     }
                                 }
                             }
-                            
+
                             // Lấy thông tin từ RoomType hoặc dùng default
                             String typeName = currentRoomType != null ? currentRoomType.getTypeName() : "Standard";
                             String price = currentRoomType != null ? String.format("%.0f", currentRoomType.getPricePerNight()) : "1,500,000";

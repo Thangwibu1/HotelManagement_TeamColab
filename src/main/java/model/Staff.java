@@ -15,6 +15,7 @@ public class Staff {
     // Constructors
     public Staff() {}
 
+
     public Staff(String fullName, String role, String username, String passwordHash, String phone, String email) {
         this.fullName = fullName;
         this.role = role;
