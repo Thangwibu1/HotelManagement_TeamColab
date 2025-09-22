@@ -16,6 +16,16 @@ public class Guest {
     // Constructors
     public Guest() {}
 
+    public Guest(String fullName, String phone, String email, String address, String idNumber, String dateOfBirth, String passwordHash) {
+        this.fullName = fullName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.idNumber = idNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.passwordHash = passwordHash;
+    }
+
     public Guest(int guestId, String fullName, String phone, String email, String address, String idNumber, String dateOfBirth, String passwordHash) {
         this.guestId = guestId;
         this.fullName = fullName;
