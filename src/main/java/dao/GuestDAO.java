@@ -42,7 +42,7 @@ public class GuestDAO {
     public Guest getGuestByUsernameAndPassword(String username, String password) {
         Guest guest = null;
 
-        String sql = "SELECT[GuestID] ,[FullName] ,[Phone] ,[Email] ,[PasswordHash] ,[Address] ,[IDNumber] ,[DateOfBirth] FROM [HotelManagement].[dbo].[GUEST] where [IDNumber] = ? and [PasswordHash] = ?";
+        String sql = "SELECT * FROM [HotelManagement].[dbo].[GUEST] where [IDNumber] = ? and [PasswordHash] = ?";
 
         try {
             Connection con = DBConnection.getConnection();
@@ -51,7 +51,7 @@ public class GuestDAO {
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs != null) {
-                guest = new Guest();
+
                 while (rs.next()) {
                     int guestId = rs.getInt("GuestID");
                     String fullName = rs.getString("FullName");
@@ -61,6 +61,7 @@ public class GuestDAO {
                     String address = rs.getString("Address");
                     String idNumber = rs.getString("IDNumber");
                     String dateOfBirth = rs.getString("DateOfBirth");
+                    guest = new Guest();
                     guest = new Guest(guestId, fullName, phone, email, address, idNumber, dateOfBirth, passwordHash);
                 }
             }
