@@ -88,7 +88,8 @@
                         if (roomTypes != null) {
                             for (RoomType rt : roomTypes) {
                     %>
-                    <option value="<%= rt.getRoomTypeId() %>"><%= rt.getTypeName() %></option>
+                    <option value="<%= rt.getRoomTypeId() %>"><%= rt.getTypeName() %>
+                    </option>
                     <%
                             }
                         }
@@ -132,7 +133,8 @@
                         <span class="room-badge <%= typeName.toLowerCase() %>"><%= typeName %></span>
                     </div>
                     <div class="room-details">
-                        <h3>Phòng <%= room.getRoomNumber() %></h3>
+                        <h3>Phòng <%= room.getRoomNumber() %>
+                        </h3>
                         <p class="room-description">
                             <%= room.getDescription() != null ? room.getDescription() : "Phòng thoải mái với đầy đủ tiện nghi hiện đại." %>
                         </p>
@@ -150,12 +152,15 @@
                             %>
                         </div>
                         <div class="room-price"><%= price %> VNĐ <span>/đêm</span></div>
-                        <button class="btn btn-book">Đặt phòng ngay</button>
+                        <form action="rentalRoom">
+                            <input type="hidden" value="<%= room.getRoomId() %>" name="roomId">
+                            <input type="submit" class="btn btn-book" value="Đặt phòng ngay">
+                        </form>
                     </div>
                 </div>
                 <%
-                        }
-                    } else {
+                    }
+                } else {
                 %>
                 <p>Hiện không có phòng nào để hiển thị.</p>
                 <%

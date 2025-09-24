@@ -6,6 +6,7 @@ import model.Guest;
 import model.Room;
 import model.RoomType;
 import model.Staff;
+import utils.IConstant;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +43,7 @@ public class HomeController extends HttpServlet {
         ArrayList<RoomType> roomTypes = roomTypeDAO.getAllRoomType();
         req.setAttribute("rooms", rooms);
         req.setAttribute("roomTypes", roomTypes);
-        req.getRequestDispatcher("home.jsp").forward(req, resp);
+        req.getRequestDispatcher(IConstant.homePage).forward(req, resp);
         // test thui
 
 

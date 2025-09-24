@@ -4,6 +4,7 @@ import dao.GuestDAO;
 import dao.StaffDAO;
 import model.Guest;
 import model.Staff;
+import utils.IConstant;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,20 +35,20 @@ public class LoginController extends HttpServlet {
         if (staff != null) {
             request.getSession().setAttribute("isLogin", true);
             request.getSession().setAttribute("userStaff", staff);
-            response.sendRedirect("home");
+            response.sendRedirect(IConstant.homeServlet);
             return; // Dừng thực thi
         }
         System.out.println(guest);
         if (guest != null) {
             request.getSession().setAttribute("isLogin", true);
             request.getSession().setAttribute("userGuest", guest);
-            response.sendRedirect("home");
+            response.sendRedirect(IConstant.homeServlet);
             return; // Dừng thực thi
         }
 
 // Nếu cả hai đều null
         request.setAttribute("error", "Invalid username or password");
-        request.getRequestDispatcher("loginPage.jsp").forward(request, response);
+        request.getRequestDispatcher(IConstant.loginPage).forward(request, response);
     }
 
     @Override
